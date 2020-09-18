@@ -12,6 +12,86 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
+## usersテーブル
+
+| Column            | Type    | Options     |
+| ----------------- | ------- | ----------- |
+| nickname          | string  | null: false |
+| email             | string  | null: false |
+| password          | string  | null: false |
+| last_name         | string  | null: false |
+| first_name        | string  | null: false |
+| birthday          | date    | null: false |
+| self_introduction | text    |             |
+
+### Association
+- has_one  :self_introduction
+- has_many :friend_approvals
+- has_many :user_relations
+- has_many :room_users
+- has_many :rooms, through: room_users
+- has_many :messages
+
+
+## friend_approvalsテーブル
+
+| Column              | Type    | Options                        |
+| ------------------- | ------- | ------------------------------ |
+| user_id             | integer | null: false, foreign_key: true |
+| friend_id           | integer | null: false, foreign_key: true |
+
+### Association
+- belong_to :user
+
+
+## user_relationsテーブル
+| Column              | Type    | Options                        |
+| ------------------- | ------- | ------------------------------ |
+| user_id             | integer | null: false, foreign_key: true |
+| friend_id           | integer | null: false, foreign_key: true |
+| friend_introduction | text    |                                |
+
+### Association
+- belong_to :user
+
+
+## rooms テーブル
+
+| Column | Type   | Options     |
+| ------ | ------ | ----------- |
+| name   | string | null: false |
+
+### Association
+- has_many :room_users
+- has_many :users, through: room_users
+- has_many :messages
+
+
+## room_users テーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| room   | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :room
+- belongs_to :user
+
+
+## messages テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| content | string     |                                |
+| user    | references | null: false, foreign_key: true |
+| room    | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :room
+- belongs_to :user
+
+
 
 * Database initialization
 

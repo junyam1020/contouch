@@ -5,25 +5,74 @@
   </div>
   <div class='nav'>
     <ul class='lists-right'>
-      <%# deviseを導入できたら、ログインの有無で表示が変わるように分岐させましょう%>
       <% if user_signed_in? %>
-        <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li> 
+        <li><%= link_to current_user.nickname, "#", class: "header-list user-nickname" %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-list logout" %></li> 
       <% else %>
-        <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-        <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+        <li><%= link_to 'ログイン', new_user_session_path, class: "header-list login" %></li>
+        <li><%= link_to '新規登録', new_user_registration_path, class: "header-list sign-up" %></li>
       <% end %>
-      <%# //deviseを導入できたら、ログインの有無で表示が変わるように分岐させましょう%>
     </ul>
   </div>
 </header>
 <div class='main'>
-  <h3>＜共通の友人一覧＞</h3>
-    <p>※一覧表示準備中※<br>もうしばらくお待ちください。。</p>
-  <h3>＜友人一覧＞</h3>
-    <p>※一覧表示準備中※<br>もうしばらくお待ちください。。</p>
-  <h3>＜ユーザー一覧＞</h3>
+  <% if user_signed_in? %>
+    <h3>＜共通の友達一覧＞</h3>
+      <p>※一覧表示準備中※<br>もうしばらくお待ちください。。</p>
+    <h3>＜友達一覧＞</h3>
+      <p>※一覧表示準備中※<br>もうしばらくお待ちください。。</p>
+    <h3>＜友達リクエストされた友人一覧＞</h3>
+    <ul class='friend-request-list'>
     <% @users.each do |user| %>
-      <p>ユーザー名：<%= user.nickname %></p>
+      <% if @friend_approvals.exists?(user_id: user.id, friend_id: current_user.id) %>
+        <li>
+          <p id= user.id><%= user.nickname %>
+            <%= link_to '承認する', '#', method: :post, class:"approve-friend-btn" %>
+            <%= link_to '却下する', '#', method: :delete, class:"reject-friend-btn" %>
+          </p>
+        </li>
+      <% end %>
     <% end %>
+    </ul>
+    <h3>＜友達申請中一覧＞</h3>
+    <ul class='friend-approval-list'>
+    <% @users.each do |user| %>
+      <% if @friend_approvals.exists?(user_id: current_user.id, friend_id: user.id) %>
+        <li>
+          <p id= user.id><%= user.nickname %></p>
+        </li>
+      <% end %>
+    <% end %>
+    </ul>
+    <h3>＜ユーザー一覧＞</h3>
+    <ul class='user-lists'>
+    <% @users.each do |user| %>
+      <% if user.id != current_user.id %>
+        <li>
+          <p id= user.id><%= user.nickname %>
+          <% unless @friend_approvals.exists?(user_id: current_user.id, friend_id: user.id) %>
+            <% unless @friend_approvals.exists?(user_id: user.id, friend_id: current_user.id) %>
+              <%= link_to '友達申請する', user_friend_approvals_path(user.id), method: :post, class:"friend-Request-btn" %>
+            <% end %>
+          <% end %>
+          </p>
+        </li>
+      <% end %>
+    <% end %>
+    </ul>
+
+  <% end %>
+  <% unless user_signed_in? %>
+    <h3>＜サービス紹介＞</h3>
+      <p>
+        contouchは、身近な人と気軽に出会える接点をつくるサービスです。<br>
+        様々なSNSの登場により、人と人との繋がりや新たな人と出会う機会は増えましたが、<br>
+        信頼のおける人と新たに出会うためのハードルが上がっています。<br><br>
+
+        そこで、友達の友達から新たな人との接点をつくることで、<br>
+        信頼のおける身近な人間関係からより出会いを作れるサービスをリリースしました！<br>
+        ぜひ、contouchを使って、身近な人から新しい出会いを作りましょう。<br>
+      </p>
+    <%= link_to 'contouchで新たな出会いを見つける', new_user_registration_path, class: "sign-up" %>
+  <% end %>
 </div>

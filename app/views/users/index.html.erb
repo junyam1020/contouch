@@ -17,9 +17,9 @@
 </header>
 <div class='main'>
   <% if user_signed_in? %>
-    <h3>＜共通の友人一覧＞</h3>
+    <h3>＜共通の友達一覧＞</h3>
       <p>※一覧表示準備中※<br>もうしばらくお待ちください。。</p>
-    <h3>＜友人一覧＞</h3>
+    <h3>＜友達一覧＞</h3>
       <p>※一覧表示準備中※<br>もうしばらくお待ちください。。</p>
     <h3>＜友達リクエストされた友人一覧＞</h3>
     <ul class='friend-request-list'>
@@ -34,7 +34,7 @@
       <% end %>
     <% end %>
     </ul>
-    <h3>＜友人申請中一覧＞</h3>
+    <h3>＜友達申請中一覧＞</h3>
     <ul class='friend-approval-list'>
     <% @users.each do |user| %>
       <% if @friend_approvals.exists?(user_id: current_user.id, friend_id: user.id) %>

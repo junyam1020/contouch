@@ -12,4 +12,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true, format: { with: valid_name_regex }
   validates :first_name, presence: true, format: { with: valid_name_regex }
   validates :birthday, presence: true
+
+  has_many :friend_approvals
 end

@@ -8,6 +8,12 @@ class FriendApprovalsController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    @friend_approval = FriendApproval.find(params[:id])
+    @friend_approval.destroy
+    redirect_to root_path
+  end
+
   private
 
   def friend_approval_params

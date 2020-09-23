@@ -28,7 +28,7 @@
         <li>
           <p id= user.id><%= user.nickname %>
             <%= link_to '承認する', '#', method: :post, class:"approve-friend-btn" %>
-            <%= link_to '却下する', '#', method: :delete, class:"reject-friend-btn" %>
+            <%= link_to '却下する', user_friend_approval_path(user_id: user.id, id: @friend_approvals.where(user_id: user.id, friend_id: current_user.id).pluck(:id)), method: :delete, class:"reject-friend-btn" %>
           </p>
         </li>
       <% end %>

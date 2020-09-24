@@ -41,7 +41,7 @@ Things you may want to cover:
 | friend_id           | integer | null: false, foreign_key: true |
 
 ### Association
-- belong_to :user
+- belongs_to :user
 
 
 ## user_relationsテーブル
@@ -52,7 +52,7 @@ Things you may want to cover:
 | friend_introduction | text    |                                |
 
 ### Association
-- belong_to :user
+- belongs_to :user
 
 
 ## rooms テーブル

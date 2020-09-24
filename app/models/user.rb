@@ -14,4 +14,5 @@ class User < ApplicationRecord
   validates :birthday, presence: true
 
   has_many :friend_approvals
+  has_many :user_relations
 end

@@ -181,3 +181,9 @@
 .main {
   margin: 0 20vw;
 }
+
+.main li {
+  text-decoration: none;
+  color: #333333;
+  list-style: none;
+}

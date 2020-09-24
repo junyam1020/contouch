@@ -20,14 +20,29 @@
     <h3>＜共通の友達一覧＞</h3>
       <p>※一覧表示準備中※<br>もうしばらくお待ちください。。</p>
     <h3>＜友達一覧＞</h3>
-      <p>※一覧表示準備中※<br>もうしばらくお待ちください。。</p>
+    <ul class='friend-list'>
+    <% @user_relations.each do |user_relation| %>
+      <% if current_user.id == user_relation.user_id %>
+        <li>
+          <% @users.each do |user| %>
+            <% if user.id == user_relation.friend_id %>
+              <p id= user_relations.friend_id>
+                <%= user.last_name %> <%= user.first_name %>
+                <%= link_to '他己紹介を書く', '#', class:"#" %>
+              </p>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    <% end %>
+    </ul>
     <h3>＜友達リクエストされた友人一覧＞</h3>
     <ul class='friend-request-list'>
     <% @users.each do |user| %>
       <% if @friend_approvals.exists?(user_id: user.id, friend_id: current_user.id) %>
         <li>
           <p id= user.id><%= user.nickname %>
-            <%= link_to '承認する', '#', method: :post, class:"approve-friend-btn" %>
+            <%= link_to '承認する', user_user_relations_path(user_id: user.id, friend_id: current_user.id), method: :post, class:"approve-friend-btn" %>
             <%= link_to '却下する', user_friend_approval_path(user_id: user.id, id: @friend_approvals.where(user_id: user.id, friend_id: current_user.id).pluck(:id)), method: :delete, class:"reject-friend-btn" %>
           </p>
         </li>

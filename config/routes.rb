@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   root to: 'users#index'
   resources :users, only: [:index] do
     resources :friend_approvals, only: [:create, :destroy]
+    resources :user_relations, only: [:create]
   end
 end

@@ -17,8 +17,8 @@
 </header>
 <div class='main'>
   <% if user_signed_in? %>
-    <h3>＜共通の友達一覧＞</h3>
-      <p>※一覧表示準備中※<br>もうしばらくお待ちください。。</p>
+    <%# <h3>＜共通の友達一覧＞</h3>
+      <p>※一覧表示準備中※<br>もうしばらくお待ちください。。</p> %>
     <h3>＜友達一覧＞</h3>
     <ul class='friend-list'>
     <% @user_relations.each do |user_relation| %>
@@ -26,9 +26,32 @@
         <li>
           <% @users.each do |user| %>
             <% if user.id == user_relation.friend_id %>
-              <p id= user_relations.friend_id>
+              <p id= user_relation_friend_id>
                 <%= user.last_name %> <%= user.first_name %>
-                <%= link_to '他己紹介を書く', '#', class:"#" %>
+                <% if user_relation.friend_introduction %>
+                  <%= link_to '他己紹介を更新する', edit_user_user_relation_path(user_id: user.id, id: user_relation.id), class:"edit-friend-introduction-btn" %>
+                  <br>
+                  投稿した紹介文：<%= user_relation.friend_introduction%>
+                <% else %>
+                  <%= link_to '他己紹介を書く', edit_user_user_relation_path(user_id: user.id, id: user_relation.id), class:"edit-friend-introduction-btn" %>
+                <% end %>
+              </p>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+    <% end %>
+    </ul>
+    <h3>＜友達が投稿した他己紹介一覧＞</h3>
+    <ul class='friend-list'>
+    <% @user_relations.each do |user_relation| %>
+      <% if current_user.id == user_relation.friend_id && user_relation.friend_introduction %>
+        <li>
+          <% @users.each do |user| %>
+            <% if user.id == user_relation.user_id %>
+              <p id=<% user_relation.id %>>
+                投稿者：<%= user.last_name %> <%= user.first_name %><br>
+                投稿した紹介文：<%= user_relation.friend_introduction%>
               </p>
             <% end %>
           <% end %>

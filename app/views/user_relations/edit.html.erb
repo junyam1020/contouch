@@ -1,0 +1,29 @@
+<header class='top-page-header'>
+  <div class='search-bar-contents'>
+    <%= link_to image_tag("contouch_logo1.png", class:"contouch-icon"), "/" %>
+  </div>
+  <div class='nav'>
+    <ul class='lists-right'>
+      <% if user_signed_in? %>
+        <li><%= link_to current_user.nickname, "#", class: "header-list user-nickname" %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-list logout" %></li>
+      <% else %>
+        <li><%= link_to 'ログイン', new_user_session_path, class: "header-list login" %></li>
+        <li><%= link_to '新規登録', new_user_registration_path, class: "header-list sign-up" %></li>
+      <% end %>
+    </ul>
+  </div>
+</header>
+<div class='main'>
+  <div class="container">
+    <% @users.each do |user| %>
+      <% if user.id == @user_relation.friend_id %>
+        <%= form_with model: @user_relation, url: user_user_relation_path(current_user.id, @user_relation.id), method: :patch, local: true do |f| %>
+          <h3><%= user.last_name %><%= user.first_name %>さんの紹介文を記入する</h3>
+          <%= f.text_area :friend_intrduction, placeholder: "紹介文を記入しましょう", rows: "10", cols: "100" %>
+          <%= f.submit "投稿する" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

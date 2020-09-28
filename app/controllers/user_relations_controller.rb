@@ -23,7 +23,6 @@ class UserRelationsController < ApplicationController
   def update
     @user_relation = UserRelation.find(params[:id])
     if @user_relation.update(user_relation_params)
-      binding.pry
       redirect_to root_path
     end
   end

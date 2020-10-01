@@ -4,15 +4,15 @@
   <% if user_signed_in? %>
     <%# <h3>＜共通の友達一覧＞</h3>
       <p>※一覧表示準備中※<br>もうしばらくお待ちください。。</p> %>
-    <h3>＜友達一覧＞</h3>
+    <h3>友達一覧</h3>
     <%= render "devise/shared/friend_list" %>
-    <h3>＜友達が投稿した他己紹介一覧＞</h3>
+    <h3>友達が投稿した他己紹介一覧</h3>
     <%= render "devise/shared/friend_introduction_list" %>
-    <h3>＜友達リクエストされた友人一覧＞</h3>
+    <h3>友達リクエストされた友人一覧</h3>
     <%= render "devise/shared/friend_request_list" %>
-    <h3>＜友達申請中一覧＞</h3>
+    <h3>友達申請中一覧</h3>
     <%= render "devise/shared/friend_approval_list" %>
-    <h3>＜ユーザー一覧＞</h3>
+    <h3>ユーザー一覧</h3>
     <%= render "devise/shared/user_list" %>
   <% end %>
   <% unless user_signed_in? %>

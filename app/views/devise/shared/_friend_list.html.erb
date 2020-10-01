@@ -1,0 +1,22 @@
+<ul class='friend-list'>
+<% @user_relations.each do |user_relation| %>
+  <% if current_user.id == user_relation.user_id %>
+    <li>
+      <% @users.each do |user| %>
+        <% if user.id == user_relation.friend_id %>
+          <p id= user_relation_friend_id>
+            <%= user.last_name %> <%= user.first_name %>
+            <% if user_relation.friend_introduction %>
+              <%= link_to '他己紹介を更新する', edit_user_user_relation_path(user_id: user.id, id: user_relation.id), class:"edit-friend-introduction-btn" %>
+              <br>
+              投稿した紹介文：<%= user_relation.friend_introduction%>
+            <% else %>
+              <%= link_to '他己紹介を書く', edit_user_user_relation_path(user_id: user.id, id: user_relation.id), class:"edit-friend-introduction-btn" %>
+            <% end %>
+          </p>
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+<% end %>
+</ul>

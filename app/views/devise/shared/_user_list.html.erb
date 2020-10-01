@@ -1,0 +1,15 @@
+<ul class='user-lists'>
+<% @users.each do |user| %>
+  <% if user.id != current_user.id %>
+    <li>
+      <p id= user.id><%= user.nickname %>
+      <% unless @friend_approvals.exists?(user_id: current_user.id, friend_id: user.id) %>
+        <% unless @friend_approvals.exists?(user_id: user.id, friend_id: current_user.id) %>
+          <%= link_to '友達申請する', user_friend_approvals_path(user.id), method: :post, class:"friend-Request-btn" %>
+        <% end %>
+      <% end %>
+      </p>
+    </li>
+  <% end %>
+<% end %>
+</ul>

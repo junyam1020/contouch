@@ -1,22 +1,26 @@
-<ul class='friend-list'>
+<div class='friend-list'>
 <% @user_relations.each do |user_relation| %>
   <% if current_user.id == user_relation.user_id %>
-    <li>
+    <div class='friend-box box'>
       <% @users.each do |user| %>
         <% if user.id == user_relation.friend_id %>
-          <p id= user_relation_friend_id>
+          <p class='friend-name'>
             <%= user.last_name %> <%= user.first_name %>
-            <% if user_relation.friend_introduction %>
-              <%= link_to '他己紹介を更新する', edit_user_user_relation_path(user_id: user.id, id: user_relation.id), class:"edit-friend-introduction-btn" %>
-              <br>
-              投稿した紹介文：<%= user_relation.friend_introduction%>
-            <% else %>
-              <%= link_to '他己紹介を書く', edit_user_user_relation_path(user_id: user.id, id: user_relation.id), class:"edit-friend-introduction-btn" %>
-            <% end %>
           </p>
+          <div class='introduction-header'>
+            <p class='introduction-title'>＜紹介文＞</p>
+            <% if user_relation.friend_introduction %>
+              <%= button_to '更新', edit_user_user_relation_path(user_id: user.id, id: user_relation.id), method: :get, class:"edit-friend-introduction-btn btn" %>
+            <% else %>
+              <%= button_to '新規作成', edit_user_user_relation_path(user_id: user.id, id: user_relation.id), method: :get, class:"edit-friend-introduction-btn btn" %>
+            <% end %>
+          </div>
+          <div class='friend-introduction'>
+            <%= user_relation.friend_introduction%>
+          </div>
         <% end %>
       <% end %>
-    </li>
+    </div>
   <% end %>
 <% end %>
 </ul>

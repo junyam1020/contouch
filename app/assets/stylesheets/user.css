@@ -138,13 +138,18 @@
 
 /* ヘッダー部分 */
 
+.top-page-header {
+ 
+}
+
 * {
   box-sizing: border-box;
 }
 
 .top-page-header {
   width: 100vw;
-  padding: 2vh 15vw;
+  padding: 2vh 15vw 42px;
+  border-bottom: 1px solid lightgray;
   display: flex;
   flex-direction: row;
   height: 50px;
@@ -172,7 +177,6 @@
 .lists-right {
   display: flex;
   list-style: none;
-  align-items: flex-end;
   align-items: right;
   margin: 0 0 0 auto;
   height: 40px;
@@ -208,4 +212,60 @@
   text-decoration: none;
   color: #333333;
   list-style: none;
+}
+
+/* 友達一覧 */
+
+.box {
+  width: 30vw;
+  border: 1px solid #ddd;
+  margin: 2vh 2vw;
+  padding: 2vh 1.5vw;
+  border-radius: 20px;
+}
+
+.friend-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.introduction-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+}
+
+.introduction-title {
+  color: gray;
+  font-size: 16px;
+}
+
+.btn {
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 7px 12px;
+  border: none;
+  font-weight: bolder;
+}
+
+.friend-introduction {
+  padding-left: 15px;
+}
+
+.friend_request_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.friend_request_name {
+  width: 200px;
 }

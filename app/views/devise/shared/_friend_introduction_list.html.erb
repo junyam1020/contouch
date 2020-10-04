@@ -1,16 +1,21 @@
-<ul class='friend-introduction-list'>
+<div class='friend-introduction-list'>
 <% @user_relations.each do |user_relation| %>
   <% if current_user.id == user_relation.friend_id && user_relation.friend_introduction %>
-    <li>
+    <div class='friend-box box'>
       <% @users.each do |user| %>
         <% if user.id == user_relation.user_id %>
-          <p id=<% user_relation.id %>>
-            投稿者：<%= user.last_name %> <%= user.first_name %><br>
-            投稿した紹介文：<%= user_relation.friend_introduction%>
+          <p class='friend-name' id=<% user_relation.id %>>
+            <%= user.last_name %> <%= user.first_name %>
           </p>
+          <div class='introduction-header'>
+            <p class='introduction-title'>＜紹介文＞</p>
+          </div>
+          <div class='friend-introduction'>
+            <%= user_relation.friend_introduction%>
+          </div>
         <% end %>
       <% end %>
-    </li>
+    </div>
   <% end %>
 <% end %>
-</ul>
+</div>

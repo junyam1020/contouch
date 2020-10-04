@@ -6,7 +6,7 @@
       <% if user.id == @user_relation.friend_id %>
         <%= form_with model: @user_relation, url: user_user_relation_path(current_user.id, @user_relation.id), method: :patch, local: true do |f| %>
           <h3><%= user.last_name %><%= user.first_name %>さんの紹介文を記入する</h3>
-          <%= f.text_area :friend_intrduction, placeholder: "紹介文を記入しましょう", rows: "10", cols: "100" %>
+          <%= f.text_area :friend_intrduction, value: @user_relation.friend_introduction, placeholder: "紹介文を記入しましょう", rows: "10", cols: "100" %>
           <%= f.submit "投稿する" %>
         <% end %>
       <% end %>

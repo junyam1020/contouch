@@ -201,7 +201,7 @@
 }
 
 .main {
-  margin: 0 20vw;
+  margin: 0 15vw;
 }
 
 .main ul li {
@@ -210,8 +210,12 @@
   list-style: none;
 }
 
-/* 友達一覧 */
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
 
+/* 友達一覧 */
 .box {
   width: 30vw;
   border: 1px solid #ddd;
@@ -260,10 +264,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.friend_request_name {
-  width: 200px;
 }
 
 .friend-of-friends-introduction {

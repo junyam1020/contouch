@@ -1,4 +1,4 @@
-<div class='user-lists'>
+<div class='user-lists list'>
 <% @users.each do |user| %>
   <% unless @user_relations.exists?(user_id: current_user.id, friend_id: user.id) %>
     <% unless @friend_approvals.exists?(user_id: current_user.id, friend_id: user.id) %>
@@ -6,7 +6,7 @@
         <% if user.id != current_user.id %>
           <div class='user-box box'>
             <div class='user'>
-              <p id= user.id><%= user.nickname %></p>
+              <p id=<%= user.id %> class='user-name'><%= user.nickname %></p>
               <%= button_to '友達申請する', user_friend_approvals_path(user.id), method: :post, class:"friend-Request-btn btn" %>
             </div>
           </div>

@@ -1,8 +1,8 @@
-<div class='friend-approval-list'>
+<div class='friend-approval-list list'>
 <% @users.each do |user| %>
   <% if @friend_approvals.exists?(user_id: current_user.id, friend_id: user.id) %>
     <div class='friend-approval-box box'>
-      <p id=<%= user.id%>><%= user.nickname %></p>
+      <p id=<%= user.id%> class='title-name'><%= user.nickname %></p>
     </div>
   <% end %>
 <% end %>

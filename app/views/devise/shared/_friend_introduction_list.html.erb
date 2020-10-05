@@ -1,10 +1,10 @@
-<div class='friend-introduction-list'>
+<div class='friend-introduction-list list'>
 <% @user_relations.each do |user_relation| %>
   <% if current_user.id == user_relation.friend_id && user_relation.friend_introduction %>
     <div class='friend-box box'>
       <% @users.each do |user| %>
         <% if user.id == user_relation.user_id %>
-          <p class='friend-name' id=<% user_relation.id %>>
+          <p class='title-name' id=<% user_relation.id %>>
             <%= user.last_name %> <%= user.first_name %>
           </p>
           <div class='introduction-header'>

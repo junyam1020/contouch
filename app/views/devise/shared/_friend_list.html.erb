@@ -1,10 +1,10 @@
-<div class='friend-list'>
+<div class='friend-list list'>
 <% @user_relations.each do |user_relation| %>
   <% if current_user.id == user_relation.user_id %>
     <div class='friend-box box'>
       <% @users.each do |user| %>
         <% if user.id == user_relation.friend_id %>
-          <p class='title-name'>
+          <p id=<%= user.id %> class='title-name'>
             <%= user.last_name %> <%= user.first_name %>
           </p>
           <div class='introduction-header'>
@@ -23,4 +23,4 @@
     </div>
   <% end %>
 <% end %>
-</ul>
+</div>

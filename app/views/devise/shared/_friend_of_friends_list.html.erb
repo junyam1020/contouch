@@ -1,4 +1,4 @@
-<div class='user-lists'>
+<div class='user-lists list'>
 <% @users.each do |user| %>
   <% if @friend_of_friends.pluck(:friend_id).include?(user.id) %>
     <div class='user-box box'>

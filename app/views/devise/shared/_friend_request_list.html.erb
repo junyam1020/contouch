@@ -1,8 +1,8 @@
-<div class='friend-request-list'>
+<div class='friend-request-list list'>
 <% @users.each do |user| %>
   <% if @friend_approvals.exists?(user_id: user.id, friend_id: current_user.id) %>
     <div class='friend_request_box box'>
-      <p class='friend_request_name', id= user.id><%= user.last_name %> <%= user.first_name %></p>
+      <p class='title-name' id=<%= user.id%>><%= user.last_name %> <%= user.first_name %></p>
         <%= button_to '承認する', user_user_relations_path(user_id: user.id, friend_id: current_user.id), method: :post, class:"approve-friend-btn btn" %>
         <%= button_to '却下する', user_friend_approval_path(user_id: user.id, id: @friend_approvals.where(user_id: user.id, friend_id: current_user.id).pluck(:id)), method: :delete, class:"reject-friend-btn btn" %>
     </div>

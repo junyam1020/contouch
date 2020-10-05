@@ -1,0 +1,20 @@
+<div class='user-lists'>
+<% @users.each do |user| %>
+  <% if @friend_of_friends.pluck(:friend_id).include?(user.id) %>
+    <div class='user-box box'>
+      <p id=<%= user.id %> class='title-name'><%= user.nickname %></p>
+      <div class='introduction-header'>
+        <p class='introduction-title'>＜紹介文＞</p>
+        <%= button_to '友達申請する', user_friend_approvals_path(user.id), method: :post, class:"friend-Request-btn btn" %>
+      </div>
+      <% @friend_of_friends.each do |friend_of_friend| %>
+        <% if user.id == friend_of_friend.friend_id %>
+          <div class='friend-introduction'>
+            <li class='friend-of-friends-introduction'><%= friend_of_friend.friend_introduction %></li>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+</div>

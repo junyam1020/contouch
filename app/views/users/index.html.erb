@@ -2,8 +2,8 @@
 
 <div class='main'>
   <% if user_signed_in? %>
-    <%# <h3>＜共通の友達一覧＞</h3>
-      <p>※一覧表示準備中※<br>もうしばらくお待ちください。。</p> %>
+    <h3>共通の友達一覧</h3>
+    <%= render "devise/shared/friend_of_friends_list", locals: { user_relations: @user_relations, users: @users } %>
     <h3>友達一覧</h3>
     <%= render "devise/shared/friend_list", locals: { user_relations: @user_relations, users: @users } %>
     <h3>友達が投稿した他己紹介一覧</h3>

@@ -138,10 +138,6 @@
 
 /* ヘッダー部分 */
 
-.top-page-header {
- 
-}
-
 * {
   box-sizing: border-box;
 }
@@ -208,7 +204,7 @@
   margin: 0 20vw;
 }
 
-.main li {
+.main ul li {
   text-decoration: none;
   color: #333333;
   list-style: none;
@@ -224,7 +220,7 @@
   border-radius: 20px;
 }
 
-.friend-name {
+.title-name {
   font-weight: bold;
   font-size: 18px;
   margin: 10px 0;
@@ -268,4 +264,8 @@
 
 .friend_request_name {
   width: 200px;
+}
+
+.friend-of-friends-introduction {
+  list-style: circle;
 }

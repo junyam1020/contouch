@@ -148,7 +148,7 @@
   border-bottom: 1px solid lightgray;
   display: flex;
   flex-direction: row;
-  height: 65px;
+  height: 50px;
 }
 
 .earch-bar-contents {
@@ -242,10 +242,17 @@
   font-size: 16px;
 }
 
+.btn-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .btn {
   font-size: 14px;
   border-radius: 5px;
   padding: 7px 12px;
+  margin-left: 12px;
   border: none;
   font-weight: bolder;
 }

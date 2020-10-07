@@ -8,7 +8,7 @@
         <%= button_to '友達申請する', user_friend_approvals_path(user.id), method: :post, class:"friend-Request-btn btn" %>
       </div>
       <% @friend_of_friends.each do |friend_of_friend| %>
-        <% if user.id == friend_of_friend.friend_id %>
+        <% if (user.id == friend_of_friend.friend_id) && friend_of_friend.friend_introduction %>
           <div class='friend-introduction'>
             <li class='friend-of-friends-introduction'><%= friend_of_friend.friend_introduction %></li>
           </div>

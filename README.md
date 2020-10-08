@@ -149,3 +149,16 @@ SNSの台頭により様々な人と繋がれる様になった一方で、コ�
 
 ## How to work in the local environment
 
+### version
+ruby: 2.6.5
+
+### Work procedure
+※ 下記作業はターミナルで実行してください
+1. ファイルをクローンしたいディレクトリに移動し、下記コマンドを実行する。
+&emsp;&emsp;git clone https://github.com/junyam1020/contouch
+
+2. rails db:createでデータベースを作成のうえ、rails db:migrateを実行する。
+
+3. ターミナルで、クローンしたデイレクトリでrails sを実行する。
+&emsp;&emsp;※ yarnが古いと表示される場合は、下記コマンドを実行してください
+&emsp;&emsp;&emsp;yarn install --check-files;

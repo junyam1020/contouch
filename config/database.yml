@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: contouch_production
-  username: contouch
-  password: <%= ENV['CONTOUCH_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock

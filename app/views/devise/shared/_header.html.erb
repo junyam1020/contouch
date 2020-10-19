@@ -1,12 +1,16 @@
 <%# CSS・・・assets/stylesheets/shared/header.css %>
 <header class='top-page-header'>
   <div class='search-bar-contents'>
-    <%= link_to image_tag("contouch_logo1.png", class:"contouch-icon"), "/" %>
+    <%= link_to image_tag("contouch_logo1.png", class:"contouch-icon"), "#" %>
   </div>
   <div class='nav'>
     <ul class='lists-right'>
       <% if user_signed_in? %>
-        <li class='nickname'><%= link_to (current_user.last_name + ' ' + current_user.first_name), "#", class: "header-list user-nickname" %>
+        <li class='notification'>
+          <%= link_to image_tag("bell-icon.png", class:"bell-icon"), "#" %>
+        </li>
+        <li class='nickname'>
+          <%= link_to (current_user.last_name + ' ' + current_user.first_name), "#", class: "header-list user-nickname" %>
           <ul>
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-list logout" %></li>
           </ul>

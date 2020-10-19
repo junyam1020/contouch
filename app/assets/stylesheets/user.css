@@ -143,12 +143,15 @@
 }
 
 .top-page-header {
+  position: fixed;
+  top: 0;
   width: 100vw;
-  padding: 2vh 15vw 42px;
+  padding: 2vh 10vw 42px;
   border-bottom: 1px solid lightgray;
   display: flex;
   flex-direction: row;
-  height: 50px;
+  height: 55px;
+  background-color: white;
 }
 
 .earch-bar-contents {
@@ -158,6 +161,11 @@
 .contouch-icon {
   width: 200px;
   height: 40px;
+}
+
+.bell-icon {
+  width: 20px;
+  height: 20px;
 }
 
 .nav {
@@ -185,6 +193,10 @@
   position: absolute;
 }
 
+.lists-right li:hover .bell-icon {
+  opacity: 50%;
+}
+
 .lists-right li:hover ul {
   display: block;
   list-style: none;
@@ -201,7 +213,10 @@
 }
 
 .main {
-  margin: 0 15vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0 calc(15vw - 50px) ;
+  padding-top: 50px;
 }
 
 .main ul li {
@@ -217,7 +232,7 @@
 
 /* 友達一覧 */
 .box {
-  width: 30vw;
+  width: 400px;
   border: 1px solid #ddd;
   margin: 2vh 2vw;
   padding: 2vh 1.5vw;

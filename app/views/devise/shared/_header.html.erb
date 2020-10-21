@@ -7,6 +7,7 @@
     <ul class='lists-right'>
       <% if user_signed_in? %>
         <li class='notification'>
+        <% if @friend_approvals.exists?(friend_id: current_user.id) %>
           <div class='badge' data-badge='n'>
             <%= image_tag "bell-icon.png", class:"bell-icon" %>
           </div>
@@ -15,6 +16,11 @@
               <%= render "devise/shared/friend_request_list" %>
             </li>
           </ul>
+        <% else %>
+          <div>
+            <%= image_tag "bell-icon.png", class:"bell-icon" %>
+          </div>
+        <% end %>
         </li>
         <li class='nickname'>
           <%= link_to (current_user.last_name + ' ' + current_user.first_name), "#", class: "header-list user-nickname" %>

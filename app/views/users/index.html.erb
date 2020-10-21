@@ -8,10 +8,8 @@
     <%= render "devise/shared/friend_introduction_list" %>
     <h3>友達一覧</h3>
     <%= render "devise/shared/friend_list", locals: { user_relations: @user_relations, users: @users } %>
-    <h3>友達リクエスト一覧</h3>
-    <%= render "devise/shared/friend_request_list" %>
-    <h3>友達申請中一覧</h3>
-    <%= render "devise/shared/friend_approval_list" %>
+    <%# <h3>友達申請中一覧</h3> %>
+    <%# <%= render "devise/shared/friend_approval_list" %>
     <h3>ユーザー一覧</h3>
     <%= render "devise/shared/user_list" %>
   <% end %>

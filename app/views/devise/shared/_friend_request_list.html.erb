@@ -1,13 +1,14 @@
-<div class='friend-request-list list'>
-<% @users.each do |user| %>
-  <% if @friend_approvals.exists?(user_id: user.id, friend_id: current_user.id) %>
-    <div class='friend_request_box box'>
-      <p class='title-name' id=<%= user.id%>><%= user.last_name %> <%= user.first_name %></p>
-      <div class='btn-list'>
-        <%= button_to '承認する', user_user_relations_path(user_id: user.id, friend_id: current_user.id), method: :post, class:"approve-friend-btn btn" %>
-        <%= button_to '削除する', user_friend_approval_path(user_id: user.id, id: @friend_approvals.where(user_id: user.id, friend_id: current_user.id).pluck(:id)), method: :delete, class:"reject-friend-btn btn" %>
+<div class='big_box_display'>
+  <h3>友達リクエスト一覧</h3>
+  <% @users.each do |user| %>
+    <% if @friend_approvals.exists?(user_id: user.id, friend_id: current_user.id) %>
+      <div class='friend_request_box box_display'>
+        <p class='title-name' id=<%= user.id%>><%= user.last_name %> <%= user.first_name %></p>
+        <div class='btn-list'>
+          <%= button_to '承認する', user_user_relations_path(user_id: user.id, friend_id: current_user.id), method: :post, class:"approve-friend-btn btn" %>
+          <%= button_to '削除する', user_friend_approval_path(user_id: user.id, id: @friend_approvals.where(user_id: user.id, friend_id: current_user.id).pluck(:id)), method: :delete, class:"reject-friend-btn btn" %>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
 </div>

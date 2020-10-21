@@ -8,7 +8,8 @@
   border: 1px solid #ddd;
   border-radius: 5px;
 }
-.account-page .account-page__inner .account-page__inner--left, .account-page .account-page__inner .account-page__inner--right {
+.account-page .account-page__inner .account-page__inner--left,
+.account-page .account-page__inner .account-page__inner--right {
   float: left;
   width: 50%;
 }
@@ -67,7 +68,7 @@
   flex-wrap: wrap;
 }
 
-.field-input-birthday>select {
+.field-input-birthday > select {
   width: 75px;
   margin-top: 5px;
   height: 45px;
@@ -89,7 +90,7 @@
   border: none;
   border-radius: 2px;
 }
-.account-page input[type=submit] {
+.account-page input[type="submit"] {
   float: left;
   margin-top: 20px;
   color: #fff;
@@ -188,12 +189,26 @@
 
 .notification {
   margin-right: 10px;
-  margin : auto 0;
+  margin: auto 0;
 }
 
 .notification ul {
   text-align: center;
-  /* border: 1px solid lightgray; */
+}
+
+.badge {
+  position: relative;
+}
+
+.badge[data-badge]:after {
+  content: "●";
+  font-family: "Courier New", Courier, monospace;
+  color: red;
+  position: relative;
+  top: -14px;
+  right: 10px;
+  font-size: 18px;
+  opacity: 90%;
 }
 
 .lists-right ul {
@@ -253,7 +268,7 @@
 .main {
   margin-left: auto;
   margin-right: auto;
-  margin: 0 calc(15vw - 50px) ;
+  margin: 0 calc(15vw - 50px);
   padding-top: 50px;
 }
 

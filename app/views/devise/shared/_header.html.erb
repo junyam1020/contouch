@@ -7,7 +7,9 @@
     <ul class='lists-right'>
       <% if user_signed_in? %>
         <li class='notification'>
-          <%= image_tag "bell-icon.png", class:"bell-icon" %>
+          <div class='badge' data-badge='n'>
+            <%= image_tag "bell-icon.png", class:"bell-icon" %>
+          </div>
           <ul>
             <li class='list_box'>
               <%= render "devise/shared/friend_request_list" %>

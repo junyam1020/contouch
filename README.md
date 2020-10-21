@@ -26,7 +26,7 @@ http://54.150.28.205/
 
 ### Basic 認証
 
-- user : admin
+- user&emsp;&emsp;: admin
 - password: passw0rd
 
 ### アカウントリスト
@@ -34,19 +34,19 @@ http://54.150.28.205/
 #### account1
 
 - nickname: demo0001
-- Email : demo0001@example.com
+- Email&emsp;&emsp;: demo0001@example.com
 - Password: demo0001
 
 #### account2
 
 - nickname: demo0002
-- Email : demo0002@example.com
+- Email&emsp;&emsp;: demo0002@example.com
 - Password: demo0002
 
 #### account3
 
 - nickname: demo0003
-- Email : demo0003@example.com
+- Email&emsp;&emsp;: demo0003@example.com
 - Password: demo0003
 
 ## How to use

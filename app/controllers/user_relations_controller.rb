@@ -17,7 +17,7 @@ class UserRelationsController < ApplicationController
   def edit
     @user_relation = UserRelation.find(params[:id])
     @users = User.all
-
+    @friend_approvals = FriendApproval.all
   end
 
   def update
